@@ -114,6 +114,10 @@ class MainWindow extends BrowserWindow {
 				dialog.showErrorBox("Error while renaming!", error.message);
 			}
 		});
+
+		ipcMain.on("reload", () => {
+			this.reload();
+		});
 	};
 }
 

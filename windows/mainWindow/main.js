@@ -2,6 +2,7 @@ const { ipcRenderer } = require("electron");
 const videoDialogBtn = document.getElementById("select-videos");
 const subtitleDialogBtn = document.getElementById("select-subtitles");
 const renameBtn = document.getElementById("rename");
+const reloadBtn = document.getElementById("reload");
 
 const fileList = document.getElementsByClassName("file-list-buttons")[0];
 const videoList = document.getElementById("video-list");
@@ -19,6 +20,10 @@ renameBtn.addEventListener("click", () => {
 	ipcRenderer.send("rename-files", "");
 });
 
+reloadBtn.addEventListener("click", () => {
+	ipcRenderer.send("reload", "");
+});
+
 function createItem(text) {
 	const listElement = document.createElement("li");
 	listElement.className = "list-group-item d-flex justify-content-between align-items-center";
@@ -30,8 +35,10 @@ function createItem(text) {
 
 function enableRenameButton() {
 	if (videoList.children.length && subtitleList.children.length) {
-		renameBtn.classList.toggle("disabled");
+		renameBtn.classList.remove("disabled");
 		renameBtn.disabled = false;
+		reloadBtn.classList.remove("disabled");
+		reloadBtn.disabled = false;
 	}
 }
 

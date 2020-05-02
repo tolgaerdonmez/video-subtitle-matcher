@@ -11,18 +11,25 @@
 		<div class="container">
 			<h1 class="hero-header text-center my-3">Match your video & subtitle files</h1>
 			<div class="d-flex justify-content-center flex-column">
-				<button class="btn btn-success align-self-center disabled" disabled id="rename">Rename Files</button>
+				<div class="row d-flex justify-content-center">
+					<button class="btn btn-success mx-2 disabled" disabled id="rename">
+						Rename Files
+					</button>
+					<button class="btn btn-warning mx-2 disabled" disabled id="reload">Reload</button>
+				</div>
 				<div class="file-list mt-3">
 					<div class="row file-list-buttons">
-						<div class="col file-list-button">
+						<div class="col file-list-button mx-2">
 							<button class="btn btn-primary row" id="select-videos">Select Videos</button>
 							<div class="row">
+								<h3 class="file-list-header">Videos:</h3>
 								<ul class="list-group" id="video-list"></ul>
 							</div>
 						</div>
-						<div class="col file-list-button">
+						<div class="col file-list-button mx-2">
 							<button class="btn btn-primary row" id="select-subtitles">Select Subtitles</button>
 							<div class="row">
+								<h3 class="file-list-header">Subtitles:</h3>
 								<ul class="list-group" id="subtitle-list"></ul>
 							</div>
 						</div>
