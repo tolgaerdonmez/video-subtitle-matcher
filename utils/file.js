@@ -40,7 +40,12 @@ module.exports.readDir = async (path, filter = null) => {
 module.exports.backupFiles = (backupPath, files) => {
 	try {
 		if (!files || !backupPath) throw new Error("Cannot do backup, no files && path given!");
-		const backupFolder = "backup-" + new Date().toLocaleString().replace(/\/|\s|,/g, "-");
+		const backupFolder =
+			"backup-" +
+			new Date()
+				.toLocaleString()
+				.replace(/\/|\s|,/g, "-")
+				.replace(/:/g, ".");
 
 		// backing up files in to backup folder
 		fs.mkdirSync(path.join(backupPath, backupFolder));
