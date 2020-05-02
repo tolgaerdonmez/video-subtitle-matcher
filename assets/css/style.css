@@ -1,0 +1,15 @@
+#rename {
+	width: 150px;
+}
+
+.file-list-button {
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#select-videos.hide,
+#select-subtitles.hide {
+	display: none;
+}

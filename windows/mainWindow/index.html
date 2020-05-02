@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Video & Subtitle Matcher</title>
+		<link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="../../assets/css/style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<h1 class="hero-header text-center my-3">Match your video & subtitle files</h1>
+			<div class="d-flex justify-content-center flex-column">
+				<button class="btn btn-success align-self-center disabled" disabled id="rename">Rename Files</button>
+				<div class="file-list mt-3">
+					<div class="row file-list-buttons">
+						<div class="col file-list-button">
+							<button class="btn btn-primary row" id="select-videos">Select Videos</button>
+							<div class="row">
+								<ul class="list-group" id="video-list"></ul>
+							</div>
+						</div>
+						<div class="col file-list-button">
+							<button class="btn btn-primary row" id="select-subtitles">Select Subtitles</button>
+							<div class="row">
+								<ul class="list-group" id="subtitle-list"></ul>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="row">
+						<div class="col">
+							<ul class="list-group" id="video-list"></ul>
+						</div>
+						<div class="col">
+							<ul class="list-group" id="subtitle-list"></ul>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+
+		<!-- scripts -->
+		<script>
+			window.$ = window.jQuery = require("../../assets/js/jquery-3.5.0.min.js");
+		</script>
+		<script src="../../assets/js/bootstrap.min.js"></script>
+		<script src="../../assets/js/bootstrap.bundle.min.js"></script>
+		<script src="./main.js"></script>
+	</body>
+</html>
