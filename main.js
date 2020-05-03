@@ -16,7 +16,7 @@ function createMainWindow() {
 		width: width,
 		height: height,
 		minWidth: width,
-		minHeight: height,
+		minHeight: height - 300,
 		maxWidth: width,
 		webPreferences: { nodeIntegration: true },
 		icon: path.join(__dirname, "assets/icons/png/icon.png"),

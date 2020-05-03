@@ -37,9 +37,9 @@ function enableRenameButton() {
 	if (videoList.children.length && subtitleList.children.length) {
 		renameBtn.classList.remove("disabled");
 		renameBtn.disabled = false;
-		reloadBtn.classList.remove("disabled");
-		reloadBtn.disabled = false;
 	}
+	reloadBtn.classList.remove("disabled");
+	reloadBtn.disabled = false;
 }
 
 ipcRenderer.on("load:videos", (e, videos) => {
