@@ -58,7 +58,7 @@ class MainWindow extends BrowserWindow {
 						click(item, focusedWindow) {
 							focusedWindow.toggleDevTools();
 						},
-						accelerator: process.platform == "darwin" ? "Command+I" : "Ctrl+I",
+						accelerator: process.platform === "darwin" ? "Command+I" : "Ctrl+I",
 					},
 					{ role: "reload" },
 				],

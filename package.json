@@ -5,7 +5,10 @@
 	"productName": "Video & Subtitle Filename Matcher",
 	"main": "electron/main.js",
 	"homepage": "./",
-	"author": "Tolga Erdonmez",
+	"author": {
+		"name": "Tolga Erdonmez",
+		"email": "tolgaerdonmez@gmail.com"
+	},
 	"license": "MIT",
 	"scripts": {
 		"start": "react-scripts start",
@@ -13,8 +16,13 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
-		"package": "electron-builder build --mac --linux deb -c.extraMetadata.main=build/electron/main.js",
-		"prepackage": "yarn build && cp -r electron build/"
+		"package-mac": "electron-builder build --mac -c.extraMetadata.main=build/electron/main.js",
+		"package-linux": "electron-builder build --linux appImage -c.extraMetadata.main=build/electron/main.js",
+		"package-win": "electron-builder build --win portable -c.extraMetadata.main=build/electron/main.js",
+		"prepackage": "yarn build && cp -r electron build/",
+		"prepackage-linux": "yarn prepackage",
+		"prepackage-mac": "yarn prepackage",
+		"prepackage-win": "yarn prepackage"
 	},
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.5.0",
