@@ -16,16 +16,3 @@
 	justify-content: center;
 	align-items: center;
 }
-
-.file-list-button h3 {
-	display: none;
-}
-
-.file-list-button.h-auto h3 {
-	display: block;
-}
-
-#select-videos.hide,
-#select-subtitles.hide {
-	display: none;
-}

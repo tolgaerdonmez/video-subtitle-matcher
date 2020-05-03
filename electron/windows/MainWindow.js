@@ -1,13 +1,13 @@
 const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const url = require("url");
+const isDev = require("electron-is-dev");
 const path = require("path");
-const fileUtils = require("../../utils/file");
+const fileUtils = require("../utils/file");
 
 class MainWindow extends BrowserWindow {
 	constructor(options) {
 		super(options);
 		this.init();
-
 		this.video_path = null;
 		this.videos = [];
 		this.subtitle_path = null;
@@ -16,11 +16,13 @@ class MainWindow extends BrowserWindow {
 
 	init = () => {
 		this.loadURL(
-			url.format({
-				pathname: path.join(__dirname, "index.html"),
-				protocol: "file:",
-				slashes: true,
-			}),
+			isDev
+				? "http://localhost:3000"
+				: url.format({
+						pathname: path.join(__dirname, "../../index.html"),
+						protocol: "file:",
+						slashes: true,
+				  }),
 		);
 		this.createMainMenu();
 
@@ -41,13 +43,13 @@ class MainWindow extends BrowserWindow {
 			},
 		];
 
-		if (process.platform == "darwin") {
+		if (process.platform === "darwin") {
 			mainMenuTemplate.unshift({
 				label: app.name,
 			});
 		}
 
-		if (process.env.NODE_ENV !== "production") {
+		if (isDev) {
 			mainMenuTemplate.push({
 				label: "Developer Tools",
 				submenu: [
@@ -56,7 +58,7 @@ class MainWindow extends BrowserWindow {
 						click(item, focusedWindow) {
 							focusedWindow.toggleDevTools();
 						},
-						accelerator: process.platform == "darwin" ? "Command+I" : "Ctrl+I",
+						accelerator: process.platform === "darwin" ? "Command+I" : "Ctrl+I",
 					},
 					{ role: "reload" },
 				],
@@ -110,6 +112,7 @@ class MainWindow extends BrowserWindow {
 					)}`,
 					type: "info",
 				});
+				this.reload();
 			} catch (error) {
 				dialog.showErrorBox("Error while renaming!", error.message);
 			}
