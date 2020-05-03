@@ -1,6 +1,6 @@
 {
 	"name": "video-subtitle-matcher",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A tool for matching video & subtitle names",
 	"productName": "Video & Subtitle Filename Matcher",
 	"main": "electron/main.js",
