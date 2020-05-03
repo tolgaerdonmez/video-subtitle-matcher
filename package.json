@@ -3,24 +3,64 @@
 	"version": "1.0.0",
 	"description": "A tool for matching video & subtitle names",
 	"productName": "Video & Subtitle Filename Matcher",
-	"main": "main.js",
+	"main": "electron/main.js",
+	"homepage": "./",
 	"author": "Tolga Erdonmez",
 	"license": "MIT",
 	"scripts": {
-		"start": "electron .",
-		"package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-		"package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --icon=assets/icons/windows/icon.ico --prune=true --out=release-builds --version-string.CompanyName='TE'",
-		"package:linux": "electron-packager . --overwrite --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds",
-		"package": "npm-run-all package:*"
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+		"package": "electron-builder build --mac --linux deb -c.extraMetadata.main=build/electron/main.js",
+		"prepackage": "yarn build && cp -r electron build/"
 	},
 	"dependencies": {
-		"electron": "^8.2.5"
+		"@testing-library/jest-dom": "^5.5.0",
+		"@testing-library/react": "^10.0.4",
+		"@testing-library/user-event": "^10.1.0",
+		"bootstrap": "^4.4.1",
+		"electron-is-dev": "^1.2.0",
+		"react": "^16.13.1",
+		"react-bootstrap": "^1.0.1",
+		"react-dom": "^16.13.1",
+		"react-scripts": "^3.4.1"
 	},
 	"devDependencies": {
 		"@types/jest": "^25.2.1",
 		"asar": "^3.0.3",
+		"concurrently": "^5.2.0",
+		"electron": "^8.2.5",
+		"electron-builder": "^22.6.0",
 		"electron-packager": "^14.2.1",
-		"jest": "^25.5.4",
-		"npm-run-all": "^4.1.5"
+		"electron-reload": "^1.5.0",
+		"npm-run-all": "^4.1.5",
+		"wait-on": "^4.0.2"
+	},
+	"build": {
+		"appId": "com.example.electron-cra",
+		"files": [
+			"build/**/*",
+			"node_modules/**/*"
+		],
+		"directories": {
+			"buildResources": "assets"
+		}
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
 	}
 }
